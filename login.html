@@ -1,0 +1,6 @@
+const { data, error } = await supabase.auth.signInWithPassword({
+  email: emailInput.value,
+  password: passwordInput.value,
+});
+if (error) alert(error.message);
+else window.location.href = "dashboard.html";

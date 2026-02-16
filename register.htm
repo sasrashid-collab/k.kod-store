@@ -1,0 +1,17 @@
+// Supabase signup
+const { data, error } = await supabase.auth.signUp({
+  email: emailInput.value,
+  password: passwordInput.value,
+});
+if (error) alert(error.message);
+else {
+  alert("Signup successful!");
+  // Create profile row
+  await supabase.from('profiles').insert({
+    id: data.user.id,
+    membership_status: 'active',
+    can_publish: true,
+    is_admin: false
+  });
+  window.location.href = "dashboard.html";
+}
